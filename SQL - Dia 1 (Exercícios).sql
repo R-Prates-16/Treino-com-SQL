@@ -19,16 +19,16 @@
 --CustomerKey AS 'ID Cliente', 
 --FirstName AS 'Primeiro Nome',
 --EmailAddress AS 'Email do Cliente',
---BirthDate AS 'Data de Anivers·rio'
+--BirthDate AS 'Data de Anivers√°rio'
 --FROM DimCustomer
 
 --3-A)
---Selecionei as 100 primeiras linhas da tebala 
+--Selecionei as 100 primeiras linhas da tabela 
 --SELECT TOP(100) *
 --FROM DimCustomer
 
 --3-B)
---Selecionei 20% da histÛria da tebale
+--Selecionei 20% da hist√≥ria da tabela
 --SELECT TOP(20) PERCENT * 
 --FROM DimCustomer
 
@@ -42,16 +42,16 @@
 --SELECT
 --FirstName AS 'Primeiro Nome',
 --EmailAddress AS 'Email do Cliente',
---BirthDate AS 'Data de Anivers·rio'
+--BirthDate AS 'Data de Anivers√°rio'
 --FROM DimCustomer
 
---4) Como n„o foi possÌvel achar a coluna fornecedor, utilizei a coluna 'ClassName' como exemplo
+--4) Como n√£o foi poss√≠vel achar a coluna fornecedor, utilizei a coluna 'ClassName' como exemplo
 --SELECT
 --ClassName AS Fornecedor
 --FROM DimProduct
 
 --5) 
---Significa que n„o vendeu um produto
+--Significa que n√£o vendeu um produto
 --SELECT *
 --FROM DimProduct
 
