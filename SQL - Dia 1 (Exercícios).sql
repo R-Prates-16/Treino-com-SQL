@@ -45,9 +45,9 @@
 --BirthDate AS 'Data de Aniversário'
 --FROM DimCustomer
 
---4) Como não foi possível achar a coluna fornecedor, utilizei a coluna 'ClassName' como exemplo
+--4) Como não foi possível achar a coluna fornecedor, utilizei a coluna 'Manufacturer' como exemplo
 --SELECT
---ClassName AS Fornecedor
+--Manufacturer AS Fornecedor
 --FROM DimProduct
 
 --5) 
