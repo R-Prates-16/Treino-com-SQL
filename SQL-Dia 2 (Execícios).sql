@@ -17,14 +17,14 @@
 
 --FROM DimProduct
 
---ORDER BY UnitPrice DESC, Weight DESC, ColorName ASC
+--ORDER BY UnitPrice DESC, Weight DESC, ColorName ASC --ou use AvailableForSaleDate como critério de desempate--
 
 
 
 --3) Achei os Produtos de categoria A (Acima de 100kg), mudei os nomes das colunas e dexei em ordem decrescente (mais pesado, para o mais leve)
 --SELECT
 --ProductName AS 'Nome do Produto',
---Weight AS 'PESO'
+--Weight AS 'PESO (Libras)'
 
 --FROM DimProduct
 
@@ -42,7 +42,7 @@ Weight > 100
 --FROM DimStore
 
 --WHERE 
-CloseDate IS NULL;
+WHERE StoreType = 'Store' AND Status = 'On'
 
 --5) Filtrei um produto específico que estava com problemas, achando as unidades que foram vendidas com defeitos
 --SELECT
@@ -64,8 +64,9 @@ BrandName = 'Litware' AND AvailableForSaleDate = '15/03/2009'
 
 --FROM DimStore
 
+  -- Poderia ser: "WHERE Status = 'off'"
 --WHERE
---Status = 'on'
+  CloseDate IS NOT NULL
 
 --7) Na categoria 1, terá 75 lojas que receberam apenas uma máquina de café; Na categoria 2, terá 187 lojas que receberam 2 máquinas de café; Nacategoria 3, terá 43 lojas, que receberam 3 máquinas de café
 --SELECT 
@@ -103,7 +104,7 @@ BrandName = 'Litware' AND AvailableForSaleDate = '15/03/2009'
 --FROM DimProduct
 
 --WHERE 
-ProductName LIKE '%LCD%'
+ProductDescription LIKE '%LCD%'
 
 --9) Selecionei todos os produtos da marca 'contoso', 'Litware' e 'Fabrikam', nas cores especificadas de acordo com o exercício
 --SELECT
