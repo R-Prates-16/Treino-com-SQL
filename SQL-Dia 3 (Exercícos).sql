@@ -1,24 +1,25 @@
-
 --1) Foi devolvido o valor da quantidade de vendas e da quantidade de produtos voltados
 SELECT
-SUM (SalesQuantity)
+SUM (SalesQuantity) AS 'Qtd. Total Vendida',
+SUM (ReturnQuantity) AS 'Qtd Total Devolvida'
 
 FROM FactSales
 
-SELECT
-SUM (ReturnQuantity)
+WHERE channelkey = 1
 
-FROM FactSales
 
+  
 --2) 
 SELECT
 AVG (YearlyIncome) AS 'Renda Anual dos cliente'
 
 FROM DimCustomer
 
-WHERE Occupation = 'Professional'
+WHERE 
+Occupation = 'Professional'
 
 
+  
 --3)
 --A) Loja com mais funcionários (325 Funcionários)
 SELECT TOP (1)
@@ -44,15 +45,15 @@ EmployeeCount IS NOT NULL
 
 ORDER BY EmployeeCount 
 
+
+  
 --4) Acehi os funcionários mais antigos, fiz a diferença de sexo entre nome e mulher (achando a quantidade de homem e de mulher
 SELECT
-
 COUNT (Gender) AS 'Quantidade de Hoemns'
 
 FROM DimEmployee
 
 WHERE EndDate IS NULL
-
 
 SELECT TOP (1)
 FirstName,
@@ -65,38 +66,30 @@ FROM DimEmployee
 WHERE Gender = 'M'
 
 
-
-
-
 SELECT
 COUNT (Gender) AS 'Quantidade de Mulheres'
 
 FROM DimEmployee
 
 WHERE EndDate IS NULL
-
-
+ 
 SELECT TOP (1)
 FirstName,
 EmailAddress,
 HireDate,
 EndDate
 
-
 FROM DimEmployee
 
 WHERE Gender = 'F'
 
+
+  
 --5) Analisei a quantdade dinstinta de marcas de produtos, das cores e das quantidade de classe de produtos
 SELECT
-COUNT(DISTINCT ColorName) AS 'Cor do Produto'
-FROM DimProduct
-
-SELECT
-COUNT(DISTINCT BrandName) AS 'Marca do Produto'
-FROM DimProduct 
-
-SELECT
+COUNT(DISTINCT ColorName) AS 'Cor do Produto',
+COUNT(DISTINCT BrandName) AS 'Marca do Produto',
 COUNT(DISTINCT ClassName) AS 'Classe do Produto'
+  
 FROM DimProduct
 
