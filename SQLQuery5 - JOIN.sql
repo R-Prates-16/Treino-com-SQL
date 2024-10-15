@@ -18,6 +18,7 @@ FS.ProductKey = DP.ProductKey
 
 
 --União da tabela de venda (FcatSales) com a tabela de lojas (DimStore) para exibir o nome da loja e o valor das vendas, a união ocorre entre as colunas StoreKey
+-- Se a tabela FactSales contém múltiplas vendas para a mesma loja, cada venda será listada, resultando em várias linhas para essa loja.--
 
 SELECT 
 DS.StoreName AS 'Nome da Loja', 
