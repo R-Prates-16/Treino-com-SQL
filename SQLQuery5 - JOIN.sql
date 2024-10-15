@@ -48,4 +48,3 @@ DimProduct DP
 
 ON
 FI.ProductKey = DP.ProductKey;
-
