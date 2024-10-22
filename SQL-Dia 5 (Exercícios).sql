@@ -1,4 +1,4 @@
---01)
+--1)
 SELECT
 ProductSubcategoryName AS 'Nome da Subcategoria',
 DimProductSubcategory.ProductSubcategoryKey AS 'ID da categoria'
@@ -57,7 +57,7 @@ ON DimProductCategory.ProductCategoryKey = DimProductSubcategory.ProductCategory
 
 
 
---Questão 05
+--QuestÄƒo 05
 --A)
 SELECT TOP(100)*
 FROM FactStrategyPlan
