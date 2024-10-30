@@ -16,26 +16,27 @@ SET @Soma = @Valor1 + @Valor2
 
 SELECT @Soma 
 
---B) SubtraÁ„o
-DECLARE @SubtraÁ„o INT
-SET @SubtraÁ„o = @Valor3 - @Valor4
+--B) Subtra√ß√£o
+DECLARE @Subtra√ß√£o INT
+SET @Subtra√ß√£o = @Valor3 - @Valor4
 
-SELECT @SubtraÁ„o
+SELECT @Subtra√ß√£o
 
 
 --C) 
-DECLARE @MultiplicaÁ„o INT
-SET @MultiplicaÁ„o = @Valor1 * @Valor4
+DECLARE @Multiplica√ß√£o INT
+SET @Multiplica√ß√£o = @Valor1 * @Valor4
 
-SELECT @MultiplicaÁ„o
+SELECT @Multiplica√ß√£o
 
 
 --D)
-DECLARE @Divis„o FLOAT
-SET @Divis„o = CAST(@Valor3 AS FLOAT) / CAST(@Valor4 AS FLOAT)
+DECLARE @Divis√£o FLOAT
+SET @Divis√£o = CAST(@Valor3 AS FLOAT) / CAST(@Valor4 AS FLOAT)
 
-SELECT ROUND (@Divis„o, 2)
+SELECT ROUND (@Divis√£o, 2)
 
+    
 
 --2)
 DECLARE @Produto Varchar
@@ -61,7 +62,7 @@ SELECT
 
 --3)
 DECLARE @Nome Varchar(MAX)
-SET @Nome = 'AndrÈ'
+SET @Nome = 'Andr√©'
 
 DECLARE @Data_de_Nascimento DATE
 SET @Data_de_Nascimento = '10/02/1998' 
@@ -70,26 +71,39 @@ SET @Data_de_Nascimento = '10/02/1998'
 DECLARE @Num_Pets INT
 SET @Num_Pets = 2
 
-SELECT 'Meu nome È ' + @Nome + ' nasci em ' + FORMAT (CAST( @Data_de_Nascimento AS datetime), 'dd/MM/yyyy') + ' e tenho ' + CAST (@Num_Pets AS varchar(200)) + ' Pets' 
+SELECT 'Meu nome √© ' + @Nome + ' nasci em ' + FORMAT (CAST( @Data_de_Nascimento AS datetime), 'dd/MM/yyyy') + ' e tenho ' + CAST (@Num_Pets AS varchar(200)) + ' Pets' 
 
 
+    
 --4)
 --USE CONTOSO
 
-DECLARE @LOJAS VARCHAR(MAX)
-SET @LOJAS = ''
-SELECT @LOJAS = @LOJAS + StoreName+', ' + CHAR(10) 
+DECLARE @Loja VARCHAR(MAX)
+SET @Loja = ''
+    
+SELECT @Loja = @Loja + StoreName+', ' + CHAR(10)
+    
 FROM DimStore 
+    
 WHERE CloseDate IS NOT NULL AND CloseDate BETWEEN '01/01/2008' AND '31/12/2008'
-PRINT LEFT(@LOJAS,DATALENGTH(@LOJAS) -3)
+    
+PRINT LEFT(@Loja,DATALENGTH(@Loja) -3)
 
+
+    
 --5)
 --USE CONTOSO
 
 DECLARE @PRODUTOS VARCHAR(MAX)
 SET @PRODUTOS = ''
+    
 SELECT @PRODUTOS = @PRODUTOS + ProductName+', ' + CHAR(10) 
+    
 FROM DimProduct
-INNER JOIN DimProductSubcategory ON DimProductSubcategory.ProductSubcategoryKey = DimProduct.ProductSubcategoryKey
+    
+INNER JOIN DimProductSubcategory 
+ON DimProductSubcategory.ProductSubcategoryKey = DimProduct.ProductSubcategoryKey
+    
 WHERE ProductSubcategoryName ='Lamps'
+    
 PRINT LEFT(@PRODUTOS,DATALENGTH(@PRODUTOS) -3)
