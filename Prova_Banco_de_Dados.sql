@@ -1,6 +1,6 @@
-CREATE DATABASE AmÈricaSuns_ElÈtricos
+CREATE DATABASE Am√©ricaSuns_El√©tricos
 
-USE AmÈricaSuns_ElÈtricos
+USE Am√©ricaSuns_El√©tricos
 
 CREATE TABLE Clientes (
 	ID_Cliente INT PRIMARY KEY NOT NULL,
@@ -14,15 +14,14 @@ CREATE TABLE Clientes (
 
 CREATE TABLE Produto (
 	ID_Produto INT PRIMARY KEY NOT NULL,
-	ID_Cliente INT NOT NULL,
 	Tipo BIT NOT NULL,
-	FabricaÁ„o DATETIME NOT NULL,
-	Valor DECIMAL(7, 2) NOT NULL,
+	Fabrica√ß√£o DATETIME NOT NULL,
+	Valor DECIMAL(7, 2) NOT NULL
 );
 
 
-CREATE TABLE Funcion·rios (
-	ID_Funcion·rio INT PRIMARY KEY NOT NULL,
+CREATE TABLE Funcion√°rios (
+	ID_Funcion√°rio INT PRIMARY KEY NOT NULL,
 	CPF VARCHAR(14) NOT NULL,
 	Nome VARCHAR(50) NOT NULL,
 	Email VARCHAR(50) NOT NULL,
@@ -40,7 +39,7 @@ INSERT INTO Clientes(ID_Cliente, RG, Nome, Nascimento, Sexo, Email, Telefone_Cli
 (5, '54.321.987-0', 'Clara Ferreira', '2005-12-05', 0, 'clara.ferreira@example.com', '(51) 98765-4321');
 
 -- Inserindo registros na tabela Produto
-INSERT INTO Produto(ID_Produto, Tipo, FabricaÁ„o, Valor) VALUES
+INSERT INTO Produto(ID_Produto, Tipo, Fabrica√ß√£o, Valor) VALUES
 (1, 1, '2024-24-12', 150.00),
 (2, 0, '2024-26-10', 200.00),
 (3, 1, '2024-11-01', 180.00),
@@ -48,8 +47,8 @@ INSERT INTO Produto(ID_Produto, Tipo, FabricaÁ„o, Valor) VALUES
 (5, 1, '2024-12-05', 160.00);
 
 
--- Inserindo registros na tabela Funcion·rios
-INSERT INTO Funcion·rios(ID_Funcion·rio, CPF, Nome, Email, Carga_horaria, Salario_mensal, Telefone) VALUES
+-- Inserindo registros na tabela Funcion√°rios
+INSERT INTO Funcion√°rios(ID_Funcion√°rio, CPF, Nome, Email, Carga_horaria, Salario_mensal, Telefone) VALUES
 (1, '111.222.333-44', 'Fernanda Costa', 'fernanda.costa@example.com', '40', 3500, '(31) 99876-5432'),
 (2, '222.333.444-55', 'Carlos Pereira', 'carlos.pereira@example.com', '30', 4000, '(41) 98765-4321'),
 (3, '333.444.555-66', 'Juliana Martins', 'juliana.martins@example.com', '35', 4200, '(51) 99876-5432'),
@@ -60,16 +59,9 @@ INSERT INTO Funcion·rios(ID_Funcion·rio, CPF, Nome, Email, Carga_horaria, Salari
 
 
 
-ALTER TABLE Produto
-ADD CONSTRAINT FK_Produto_Cliente FOREIGN KEY (ID_Cliente)
-REFERENCES Cliente(ID_Cliente);
-
-
-
-
 SELECT * FROM Clientes
 SELECT * FROM Produto
-SELECT * FROM Funcion·rios
+SELECT * FROM Funcion√°rios
 
 
 
@@ -86,7 +78,7 @@ FROM Clientes
 
 WHERE Sexo = '1'
 
---Retorna apenas clientes da loja de elÈtricos com o sexo=1 que significa masculino
+--Retorna apenas clientes da loja de el√©tricos com o sexo=1 que significa masculino
 
 --Tipo=1 Masculino
 --Tipo=2 Feminino 
@@ -132,9 +124,9 @@ END
 
 GO
 INSERT INTO Clientes (ID_Cliente, RG, Nome, Nascimento, Sexo, Email, Telefone_Cliente)
-VALUES (6, '99.888.555.1', 'Jo„o Prates', '1990-05-09', 1, 'joaoprateessss@gmail.com', '(11) 99995-5648');
+VALUES (6, '99.888.555.1', 'Jo√£o Prates', '1990-05-09', 1, 'joaoprateessss@gmail.com', '(11) 99995-5648');
 
---Notifica Quando alguÈm È adicionado na tabela Clientes
+--Notifica Quando algu√©m √© adicionado na tabela Clientes
 
 
 
@@ -145,12 +137,12 @@ VALUES (6, '99.888.555.1', 'Jo„o Prates', '1990-05-09', 1, 'joaoprateessss@gmail
 SELECT 
 Nome,
 Carga_horaria,
-AVG(Salario_mensal) OVER (PARTITION BY Carga_horaria) AS 'S·lario por carga hor·ria'
+AVG(Salario_mensal) OVER (PARTITION BY Carga_horaria) AS 'S√°lario por carga hor√°ria'
 
-FROM Funcion·rios
+FROM Funcion√°rios
 
---Esse cÛdigo apresenta a mÈdia sal·rial levando em consideraÁ„o a carga hor·ria, ou seja, vocÍ consegue averigar se os sal·rios est„o equilibrados de acordo com a carga hor·ria, levando em
---consideraÁ„o a quantidae de mÈdico para cada carga hor·ria
+--Esse c√≥digo apresenta a m√©dia sal√°rial levando em considera√ß√£o a carga hor√°ria, ou seja, voc√™ consegue averigar se os sal√°rios est√£o equilibrados de acordo com a carga hor√°ria, levando em
+--considera√ß√£o a quantidae de m√©dico para cada carga hor√°ria
 
 
 
@@ -189,7 +181,7 @@ EXEC SP_ADD_CLIENTE
 	@Telefone_Cliente = '(11) 48229-6855'
 
 SELECT* FROM Clientes
---Automatiza o processo de adiÁ„o de clientes na loja de elÈtricos
+--Automatiza o processo de adi√ß√£o de clientes na loja de el√©tricos
 
 
 
@@ -210,5 +202,5 @@ SELECT *
 FROM Compra_Detalhes
 ORDER BY Valor
 
---Ele especifica o valor dos produtos e os seus preÁos, ou seja, È possivel analisar se o tipo 1 ou o tipo 2 de produtos tem os 
---preÁos mais elavados, ou seja, cria uma tabela tempor·ria que torna mais f·cil a comparaÁ„o dos preÁos com os produtos, ordenando do produto mais caro para o mais barato.
+--Ele especifica o valor dos produtos e os seus pre√ßos, ou seja, √© possivel analisar se o tipo 1 ou o tipo 2 de produtos tem os 
+--pre√ßos mais elavados, ou seja, cria uma tabela tempor√°ria que torna mais f√°cil a compara√ß√£o dos pre√ßos com os produtos, ordenando do produto mais caro para o mais barato.
